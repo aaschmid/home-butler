@@ -41,3 +41,9 @@ This is currently done manually with the following steps:
 the state is `asleep` or `unknown`. `idle` and `screensaver` are `1` when the state matches.
 The connection is re-established transparently on connection loss; if the device is
 unreachable the endpoint responds with `503`.
+
+# Troubleshooting
+
+The container exits with status `143` on `docker stop`. This is expected: `143 = 128 + SIGTERM`,
+and uvicorn re-raises the SIGTERM it caught after completing its graceful shutdown, so the exit
+code reflects the stop signal — not a crash. No action needed.
