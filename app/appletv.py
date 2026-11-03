@@ -141,7 +141,7 @@ class AppleTvClient:
         except TimeoutError:
             logger.debug(f"Connection to port {port} timed out after {CONNECT_TIMEOUT}s.")
             return None
-        except Exception as e:
+        except Exception as e:  # noqa: BLE001 - probe must survive any pyatv/transport error
             logger.debug(f"Connection to port {port} failed: {type(e).__name__}: {e}")
             return None
 

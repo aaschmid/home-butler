@@ -25,12 +25,11 @@ class RequestTrackingMiddleware(BaseHTTPMiddleware):
 
     @staticmethod
     def _extract_message(response: Response) -> str:
-        if response.status_code >= 400:
+        if response.status_code >= 400 and isinstance(response, PlainTextResponse):
             # For `PlainTextResponse` used by exception handlers, `body` is directly accessible
-            if isinstance(response, PlainTextResponse):
-                body = response.body
-                if body:
-                    return body.decode("utf-8") if isinstance(body, bytes) else str(body)
+            body = response.body
+            if body:
+                return body.decode("utf-8") if isinstance(body, bytes) else str(body)
         return "n/a"
 
 

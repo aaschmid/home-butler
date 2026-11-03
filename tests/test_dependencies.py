@@ -56,7 +56,7 @@ async def test_reconnects_using_cached_port_after_dead_connection(dependency_moc
     def _fetch_side_effect():
         fetch_calls.append(None)
         if len(fetch_calls) == 1:
-            raise Exception("Dead")  # first call on the dead cached connection
+            raise RuntimeError("Dead")  # first call on the dead cached connection
         return SystemStatus.Awake  # second call on the reconnected connection
 
     client._fetch_system_status = AsyncMock(side_effect=_fetch_side_effect)  # type: ignore[method-assign]
@@ -126,7 +126,7 @@ async def test_dead_cached_port_falls_back_to_full_scan(dependency_mocker):
     def _fetch_side_effect():
         fetch_calls.append(None)
         if len(fetch_calls) == 1:
-            raise Exception("Dead")  # first call on the dead cached connection
+            raise RuntimeError("Dead")  # first call on the dead cached connection
         return SystemStatus.Awake  # second call on the reconnected connection
 
     client._fetch_system_status = AsyncMock(side_effect=_fetch_side_effect)  # type: ignore[method-assign]
