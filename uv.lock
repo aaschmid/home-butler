@@ -1208,7 +1208,7 @@ wheels = [
 ]
 
 [[package]]
-name = "vicare-automation-server"
+name = "house-butler"
 version = "0.9.0"
 source = { editable = "." }
 dependencies = [

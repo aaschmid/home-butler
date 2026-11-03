@@ -1,5 +1,5 @@
 [project]
-name = "vicare-automation-server"
+name = "house-butler"
 version = "0.9.0"
 description = "A lightwight fast api server, in order to access and manipulate ViCare products"
 license = {text = "MIT"}
@@ -29,10 +29,10 @@ dev = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/aaschmid/vicare-automation-server"
-Repository = "https://github.com/aaschmid/vicare-automation-server"
-Changelog = "https://github.com/aaschmid/vicare-automation-server/releases"
-"Bug Tracker" = "https://github.com/aaschmid/vicare-automation-server/issues"
+Homepage = "https://github.com/aaschmid/house-butler"
+Repository = "https://github.com/aaschmid/house-butler"
+Changelog = "https://github.com/aaschmid/house-butler/releases"
+"Bug Tracker" = "https://github.com/aaschmid/house-butler/issues"
 
 [build-system]
 requires = ["setuptools>=84.0.0", "wheel"]
