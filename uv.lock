@@ -492,7 +492,7 @@ wheels = [
 ]
 
 [[package]]
-name = "house-butler"
+name = "home-butler"
 version = "0.9.0"
 source = { editable = "." }
 dependencies = [
