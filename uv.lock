@@ -491,6 +491,52 @@ wheels = [
 ]
 
 [[package]]
+name = "house-butler"
+version = "0.9.0"
+source = { editable = "." }
+dependencies = [
+    { name = "fastapi" },
+    { name = "pyatv" },
+    { name = "pydantic-settings" },
+    { name = "pyvicare" },
+    { name = "requests" },
+    { name = "uvicorn" },
+]
+
+[package.optional-dependencies]
+dev = [
+    { name = "black" },
+    { name = "httpx2" },
+    { name = "isort" },
+    { name = "mypy" },
+    { name = "pytest" },
+    { name = "pytest-asyncio" },
+    { name = "pytest-cov" },
+    { name = "pytest-mock" },
+    { name = "ruff" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "black", marker = "extra == 'dev'", specifier = ">=26.5.1" },
+    { name = "fastapi", specifier = ">=0.141.1,<1.0.0" },
+    { name = "httpx2", marker = "extra == 'dev'", specifier = ">=0.2.0" },
+    { name = "isort", marker = "extra == 'dev'", specifier = ">=5.13.2" },
+    { name = "mypy", marker = "extra == 'dev'", specifier = ">=2.3.1" },
+    { name = "pyatv", git = "https://github.com/albaintor/pyatv?rev=26.5" },
+    { name = "pydantic-settings", specifier = ">=2.15.0,<3.0.0" },
+    { name = "pytest", marker = "extra == 'dev'", specifier = ">=9.1.1" },
+    { name = "pytest-asyncio", marker = "extra == 'dev'", specifier = ">=1.4.0" },
+    { name = "pytest-cov", marker = "extra == 'dev'", specifier = ">=4.1.0" },
+    { name = "pytest-mock", marker = "extra == 'dev'", specifier = ">=3.12.0" },
+    { name = "pyvicare", specifier = ">=2.61.0,<3.0.0" },
+    { name = "requests", specifier = ">=2.34.2,<3.0.0" },
+    { name = "ruff", marker = "extra == 'dev'", specifier = ">=0.15.22" },
+    { name = "uvicorn", specifier = ">=0.52.2,<1.0.0" },
+]
+provides-extras = ["dev"]
+
+[[package]]
 name = "httpcore2"
 version = "2.13.1"
 source = { registry = "https://pypi.org/simple" }
@@ -968,7 +1014,7 @@ wheels = [
 
 [[package]]
 name = "pytest"
-version = "9.1.1"
+version = "9.2.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "colorama", marker = "sys_platform == 'win32'" },
@@ -977,9 +1023,9 @@ dependencies = [
     { name = "pluggy" },
     { name = "pygments" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/e4/47/b9efed96c114afcfa3c9d3fe98a76a1d14c74a9e266d397cf6eb64be5e01/pytest-9.1.1.tar.gz", hash = "sha256:1088fbde8f2b49d95a549a195707afa7a76a3ce9bcadc26b6d71f0ffda5fe313", size = 1636369, upload-time = "2026-06-19T10:58:32.857Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/79/42/bb4641652e58dedeac2ec51abc1f8cae4fee4ec63899a0999016229a0f2a/pytest-9.2.0.tar.gz", hash = "sha256:97c4f3b1f3c7414aa36465e09b8220f1d03627993bd51b1282e193753c80557b", size = 1797555, upload-time = "2026-10-27T21:30:20.728Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/24/25/1de2678b631f5a49215c6c96fff41ba892b0a34df68d6d80292b1b48aa7f/pytest-9.1.1-py3-none-any.whl", hash = "sha256:37a86b45efb9a47a61a36449063e8e18d0cab3161329fc099eb21783169c4f0c", size = 386536, upload-time = "2026-06-19T10:58:31.347Z" },
+    { url = "https://files.pythonhosted.org/packages/51/39/1f5d8c8877a0fa327db959c19341d4be61660de1ab6b7391f9eb805bcd67/pytest-9.2.0-py3-none-any.whl", hash = "sha256:07acdcf88ec174f907dc01af70bf52d49b014bbab03faeeade31c96b18c2e588", size = 411776, upload-time = "2026-10-27T21:30:19.131Z" },
 ]
 
 [[package]]
@@ -1206,52 +1252,6 @@ sdist = { url = "https://files.pythonhosted.org/packages/da/34/30e9280707135d2cf
 wheels = [
     { url = "https://files.pythonhosted.org/packages/38/0c/b54a4fdd7f90a3af8b02ebc9ce6712c2c208b7926a2f7bad95c33ebbe943/uvicorn-0.54.0-py3-none-any.whl", hash = "sha256:505bdb0f318731d45f1f712071fc781a8981f6847a31c902c9f5e652d4f67faf", size = 87427, upload-time = "2026-09-25T06:52:35.829Z" },
 ]
-
-[[package]]
-name = "house-butler"
-version = "0.9.0"
-source = { editable = "." }
-dependencies = [
-    { name = "fastapi" },
-    { name = "pyatv" },
-    { name = "pydantic-settings" },
-    { name = "pyvicare" },
-    { name = "requests" },
-    { name = "uvicorn" },
-]
-
-[package.optional-dependencies]
-dev = [
-    { name = "black" },
-    { name = "httpx2" },
-    { name = "isort" },
-    { name = "mypy" },
-    { name = "pytest" },
-    { name = "pytest-asyncio" },
-    { name = "pytest-cov" },
-    { name = "pytest-mock" },
-    { name = "ruff" },
-]
-
-[package.metadata]
-requires-dist = [
-    { name = "black", marker = "extra == 'dev'", specifier = ">=26.5.1" },
-    { name = "fastapi", specifier = ">=0.141.1,<1.0.0" },
-    { name = "httpx2", marker = "extra == 'dev'", specifier = ">=0.2.0" },
-    { name = "isort", marker = "extra == 'dev'", specifier = ">=5.13.2" },
-    { name = "mypy", marker = "extra == 'dev'", specifier = ">=2.3.1" },
-    { name = "pyatv", git = "https://github.com/albaintor/pyatv?rev=26.5" },
-    { name = "pydantic-settings", specifier = ">=2.15.0,<3.0.0" },
-    { name = "pytest", marker = "extra == 'dev'", specifier = ">=9.1.1" },
-    { name = "pytest-asyncio", marker = "extra == 'dev'", specifier = ">=1.4.0" },
-    { name = "pytest-cov", marker = "extra == 'dev'", specifier = ">=4.1.0" },
-    { name = "pytest-mock", marker = "extra == 'dev'", specifier = ">=3.12.0" },
-    { name = "pyvicare", specifier = ">=2.61.0,<3.0.0" },
-    { name = "requests", specifier = ">=2.34.2,<3.0.0" },
-    { name = "ruff", marker = "extra == 'dev'", specifier = ">=0.15.22" },
-    { name = "uvicorn", specifier = ">=0.52.2,<1.0.0" },
-]
-provides-extras = ["dev"]
 
 [[package]]
 name = "wrapt"
