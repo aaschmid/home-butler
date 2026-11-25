@@ -1,6 +1,6 @@
 from fastapi import Depends, HTTPException
-from PyViCare import PyViCareDeviceConfig
 from PyViCare.PyViCare import PyViCare
+from PyViCare.PyViCareDeviceConfig import PyViCareDeviceConfig
 
 from app import dependencies
 

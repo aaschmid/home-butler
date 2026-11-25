@@ -2,7 +2,7 @@ import enum
 from typing import Annotated
 
 from fastapi import APIRouter, Body, Depends, Path
-from PyViCare import PyViCare
+from PyViCare.PyViCare import PyViCare
 from PyViCare.PyViCareHeatingDevice import HeatingDevice
 from starlette import status
 

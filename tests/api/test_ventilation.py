@@ -143,7 +143,7 @@ def test_ventilation_mode(dependency_mocker):
     dependency_mocker.vicare.devices = [
         Mock(
             service=Mock(roles=["type:ventilation"]),
-            asVentilation=lambda: Mock(getActiveMode=lambda: "permanent"),
+            asVentilation=lambda: Mock(getActiveVentilationMode=lambda: "permanent"),
         )
     ]
     response = client.get(f"{ROUTE_PREFIX_VENTILATION}/mode")
@@ -169,7 +169,7 @@ def test_ventilation_set_mode_permanent(dependency_mocker, level: int, expected:
     dependency_mocker.vicare.devices = [
         Mock(
             service=Mock(roles=["type:ventilation"]),
-            asVentilation=lambda: Mock(setPermanentLevel=setter_mock),
+            asVentilation=lambda: Mock(setVentilationLevel=setter_mock),
         )
     ]
     response = client.put(f"{ROUTE_PREFIX_VENTILATION}/mode/permanent/{level}")
@@ -203,7 +203,7 @@ def test_ventilation_program(dependency_mocker):
     dependency_mocker.vicare.devices = [
         Mock(
             service=Mock(roles=["type:ventilation"]),
-            asVentilation=lambda: Mock(getActiveProgram=lambda: "levelThree"),
+            asVentilation=lambda: Mock(getVentilationLevel=lambda: "levelThree"),
         )
     ]
     response = client.get(f"{ROUTE_PREFIX_VENTILATION}/program")

@@ -1,8 +1,9 @@
 from typing import Annotated
 
 from fastapi import APIRouter, Depends, HTTPException, Path
-from PyViCare import PyViCareDeviceConfig, PyViCareVentilationDevice
 from PyViCare.PyViCare import PyViCare
+from PyViCare.PyViCareDeviceConfig import PyViCareDeviceConfig
+from PyViCare.PyViCareVentilationDevice import VentilationDevice
 from starlette import status
 
 from app import dependencies
@@ -20,14 +21,14 @@ def get_single_ventilation_device(vicare: PyViCare = Depends(dependencies.get_vi
     return result[0]
 
 
-def get_single_ventilation(vicare: PyViCare = Depends(dependencies.get_vicare)) -> PyViCareVentilationDevice:
+def get_single_ventilation(vicare: PyViCare = Depends(dependencies.get_vicare)) -> VentilationDevice:
     return get_single_ventilation_device(vicare).asVentilation()
 
 
 @router.get("")
 def get_ventilation(
     device: PyViCareDeviceConfig = Depends(get_single_ventilation_device),
-    ventilation: PyViCareVentilationDevice = Depends(get_single_ventilation),
+    ventilation: VentilationDevice = Depends(get_single_ventilation),
 ) -> dict:
     def prop(name: str) -> dict:
         return ventilation.getProperty(name)["properties"]
@@ -111,27 +112,29 @@ def get_ventilation(
 
 
 @router.get("/mode")
-def get_mode(ventilation: PyViCareVentilationDevice = Depends(get_single_ventilation)) -> str:
-    return ventilation.getActiveMode()
+def get_mode(ventilation: VentilationDevice = Depends(get_single_ventilation)) -> str:
+    return ventilation.getActiveVentilationMode()
 
 
 @router.put("/mode/permanent/{level}", status_code=status.HTTP_204_NO_CONTENT)
 def set_mode_permanent(
     level: Annotated[int, Path(title="The ventilation level in percent", ge=0, le=100)],
-    ventilation: PyViCareVentilationDevice = Depends(get_single_ventilation),
+    ventilation: VentilationDevice = Depends(get_single_ventilation),
 ):
     if 0 <= level <= 25:
-        ventilation.setPermanentLevel("levelOne")
+        ventilation.setVentilationLevel("levelOne")
     elif 25 < level <= 50:
-        ventilation.setPermanentLevel("levelTwo")
+        ventilation.setVentilationLevel("levelTwo")
     elif 50 < level <= 75:
-        ventilation.setPermanentLevel("levelThree")
+        ventilation.setVentilationLevel("levelThree")
     elif 75 < level <= 100:
-        ventilation.setPermanentLevel("levelFour")
+        ventilation.setVentilationLevel("levelFour")
     else:
         raise HTTPException(status_code=404, detail="Unknown level")
 
 
 @router.get("/program")
-def get_program(ventilation: PyViCareVentilationDevice = Depends(get_single_ventilation)) -> str:
-    return ventilation.getActiveProgram()
+def get_program(ventilation: VentilationDevice = Depends(get_single_ventilation)) -> str:
+    # getActiveVentilationProgram is deprecated by PyViCare (Viessmann killed ventilation.operating.programs.*);
+    # read the fan level from ventilation.operating.state instead.
+    return ventilation.getVentilationLevel()

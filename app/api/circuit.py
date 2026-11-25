@@ -2,8 +2,8 @@ import enum
 from typing import Annotated
 
 from fastapi import APIRouter, Body, Depends, HTTPException, Path
-from PyViCare import PyViCareHeatPump
 from PyViCare.PyViCareHeatingDevice import HeatingCircuit
+from PyViCare.PyViCareHeatPump import HeatPump
 from starlette import status
 
 from app.api.heating import ROUTE_PREFIX_HEATING
@@ -50,7 +50,7 @@ class HeatingCircuitProgram(enum.Enum):
         }.get(value, -1)
 
 
-def get_single_circuit(heatpump: PyViCareHeatPump = Depends(get_single_heatpump)) -> HeatingCircuit:
+def get_single_circuit(heatpump: HeatPump = Depends(get_single_heatpump)) -> HeatingCircuit:
     result = [c for c in heatpump.circuits]
     if len(result) <= 0:
         raise HTTPException(422, "No circuit device found.")
