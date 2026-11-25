@@ -34,6 +34,8 @@ jobs:
         run: uv run isort --check --diff app/ tests/
       - name: Run ruff
         run: uv run ruff check app/ tests/
+      - name: Run pyrefly
+        run: uv run pyrefly check
 
       # Test
       - name: Run tests

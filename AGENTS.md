@@ -28,7 +28,7 @@ uv run pytest --cov=app --cov-report=html      # With coverage
 uv run black .
 uv run isort .
 uv run ruff check app/ tests/
-uv run mypy app
+uv run pyrefly check
 ```
 
 ## Code Style Guidelines

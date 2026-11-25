@@ -20,7 +20,7 @@ dev = [
     "black>=26.5.1",
     "httpx2>=0.2.0",
     "isort>=5.13.2",
-    "mypy>=2.3.1",
+    "pyrefly>=0.15.0",
     "pytest>=9.1.1",
     "pytest-asyncio>=1.4.0",
     "pytest-cov>=4.1.0",
@@ -41,9 +41,8 @@ build-backend = "setuptools.build_meta"
 [tool.black]
 line-length = 120
 
-[tool.mypy]
-warn_return_any = true
-warn_unused_configs = true
+[tool.pyrefly]
+project-includes = ["app"]
 
 [tool.isort]
 profile = "black"
