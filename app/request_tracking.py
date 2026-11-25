@@ -12,7 +12,7 @@ from starlette.responses import PlainTextResponse, Response
 class RequestTrackingMiddleware(BaseHTTPMiddleware):
     """Middleware to track API request statistics."""
 
-    def __init__(self, app, request_tracker: "RequestTracker"):
+    def __init__(self, app, request_tracker: RequestTracker):
         super().__init__(app)
         self.request_tracker = request_tracker
 
